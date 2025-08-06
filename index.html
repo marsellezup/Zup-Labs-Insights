@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zup Labs Insights</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <img src="assets/logo-zup.png" alt="Zup" class="logo">
+            </div>
+            <div class="title-section">
+                <h1 class="main-title">Zup Labs Insights</h1>
+                <div class="edition-number">Edição #11</div>
+            </div>
+            <div class="divider"></div>
+        </header>
+
+        <!-- Introduction -->
+        <section class="introduction">
+            <p class="intro-text">
+                Bem-vindo ao Zup Labs Insights, sua fonte semanal de conhecimento e inovação em tecnologia. 
+                Aqui você encontrará os melhores conteúdos sobre produto, engenharia, arquitetura e muito mais, 
+                cuidadosamente selecionados pela nossa equipe.
+            </p>
+        </section>
+
+        <!-- Content Summary -->
+        <section class="content-summary">
+            <h2 class="section-title">Nesta edição, você vai ler:</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <span class="tag">Engenharia</span>
+                    <h3 class="summary-title">Arquiteturas descobertas por máquinas: IA expandindo as habilidades humanas</h3>
+                </div>
+                <div class="summary-item">
+                    <span class="tag">Engenharia</span>
+                    <h3 class="summary-title">Transferindo inteligência: como o aprendizado em um domínio pode impulsionar a IA em outros</h3>
+                </div>
+                <div class="summary-item">
+                    <span class="tag">Produto</span>
+                    <h3 class="summary-title">EUA e China: divulgação dos planos de ação em IA pode definir rumos globais</h3>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-divider"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <article class="content-article">
+                <div class="article-header">
+                    <h2 class="article-title">Arquiteturas descobertas por máquinas: IA expandindo as habilidades humanas</h2>
+                    <span class="tag">Engenharia</span>
+                </div>
+                <div class="article-content">
+                        <p>
+                            O estudo <em>"AlphaGo Moment for Model Architecture Discovery"</em>, 
+                            conduzido por pesquisadores da Shanghai Jiao Tong University, 
+                            em colaboração com a SII (Instituto de Inovação em IA de Xangai) 
+                            e o laboratório GAIR (General AI Research Lab), apresentou o 
+                            <strong>ASI-ARCH</strong>, um sistema autônomo capaz de propor, implementar, 
+                            treinar e avaliar novas arquiteturas de IA sem intervenção 
+                            humana direta.
+                        </p>
+                        
+                        <p>
+                            O sistema demonstra potencial para identificar soluções em 
+                            arquitetura que vão além do alcance dos métodos tradicionais, 
+                            superando inclusive modelos desenvolvidos por especialistas 
+                            humanos. Ele opera de maneira autônoma: gera hipóteses de 
+                            novas arquiteturas, transforma essas ideias em código, treina, e 
+                            avalia os resultados combinando métricas objetivas com uma 
+                            análise qualitativa conduzida por outro modelo de linguagem.
+                        </p>
+                        
+                        <p>
+                            Diferente do <em>Neural Architecture Search</em> (NAS) tradicional, que se 
+                            restringe a combinar blocos pré‑definidos por humanos, o 
+                            ASI‑ARCH não depende dessas restrições. O estudo focou em 
+                            arquiteturas baseadas em <em>attention</em>, mecanismo central nos 
+                            modelos modernos por permitir que o sistema priorize partes 
+                            relevantes da entrada. Apesar de estar no centro de soluções 
+                            como o <em>Transformer</em>, o <em>attention</em> traz limitações importantes, 
+                            sobretudo em termos de custo computacional. Portanto, o 
+                            trabalho investiga se seria possível que uma IA identificasse 
+                            alternativas mais eficientes de forma autônoma.
+                        </p>
+                        
+                        <p>
+                            De acordo com os autores do estudo, o sistema executou <strong>1.773 
+                            experimentos</strong>, acumulando mais de <strong>20 mil horas de 
+                            processamento</strong> em unidades gráficas (GPU). Como resultado, 
+                            identificou <strong>106 novas arquiteturas de alto desempenho</strong>, muitas 
+                            delas superiores às desenvolvidas por especialistas humanos. O 
+                            estudo sugere que quanto mais poder computacional disponível, 
+                            maior o potencial de inovação, indicando o início de uma "lei de 
+                            escala" para descobertas em IA.
+                        </p>
+                        
+                        <p>
+                            Os principais avanços técnicos incluem novos mecanismos de 
+                            roteamento entre camadas, mecanismos mais eficientes para a 
+                            memória de longo prazo e estruturas hierárquicas capazes de 
+                            integrar dados locais e globais. Essas descobertas mostraram 
+                            desempenho superior em tarefas de linguagem natural, como 
+                            compreensão de contexto, raciocínio e análise de informações, 
+                            superando modelos reconhecidos como <strong>DeltaNet</strong> e <strong>Mamba2</strong>.
+                        </p>
+                        
+                        <p>
+                            Do ponto de vista de gestão e inovação, o ASI-ARCH representa 
+                            uma <strong>mudança de paradigma</strong>: a evolução dos modelos de IA deixa 
+                            de depender apenas da criatividade e do tempo dos especialistas 
+                            e passa a ser guiada pelo poder computacional disponível. Isso 
+                            permite acelerar a criação de algoritmos em escala industrial, 
+                            como já aconteceu com a automação nas linhas de produção. 
+                            Para quem desenvolve produtos com LLMs, os ganhos são claros: 
+                            ciclos de inovação muito mais curtos e uma diversidade de 
+                            soluções que foge das limitações humanas, o que pode trazer 
+                            saltos significativos de eficiência.
+                        </p>
+                        
+                        <p>
+                            Por outro lado, o estudo também destaca <strong>desafios importantes</strong>. O 
+                            custo computacional ainda é elevado, já que cada experimento 
+                            demanda milhares de horas de GPU, e as arquiteturas 
+                            descobertas precisam ser otimizadas antes do uso prático em 
+                            produção. Todo o código e resultados estão disponíveis em 
+                            <em>open source</em>, o que abre espaço para adoção e adaptação por outras 
+                            organizações. Para executivos, acompanhar esse avanço pode ser 
+                            um diferencial estratégico, já que a própria IA passa a reinventar o 
+                            desenvolvimento de novos modelos.
+                        </p>
+                </div>
+            </article>
+
+            <article class="content-article">
+                <div class="article-header">
+                    <h2 class="article-title">Transferindo inteligência: como o aprendizado em um domínio pode impulsionar a IA em outros</h2>
+                    <span class="tag">Engenharia</span>
+                </div>
+                <div class="article-content">
+                    <p>
+                        O estudo <em>"Can One Domain Help Others? A Data‑Centric Study 
+                        on Multi‑Domain Reasoning via Reinforcement Learning"</em>, 
+                        conduzido por pesquisadores chineses da Shanghai Artificial 
+                        Intelligence Laboratory, analisou se IAs conseguem transferir 
+                        aprendizado de um domínio (como matemática, lógica ou 
+                        programação) para melhorar o desempenho em outros. 
+                    </p>
+                
+                    <p>
+                        Usando uma técnica de <em>reinforcement learning</em> (aprendizado por 
+                        reforço) combinada com a abordagem <strong>RLVR</strong>, os pesquisadores 
+                        mostraram que a transferência de conhecimento é possível, 
+                        principalmente entre lógica e programação, onde os ganhos 
+                        foram mais expressivos, indicando que o aproveitamento 
+                        depende da proximidade entre os tipos de domínio.
+                    </p>
+                    
+                    <p>
+                        O estudo destaca que o sucesso nesse tipo de aprendizado 
+                        cruzado está diretamente relacionado à <strong>qualidade dos dados</strong>. 
+                        Quanto mais variados, representativos e bem estruturados forem 
+                        os dados de cada domínio, maior será a capacidade da 
+                        inteligência artificial de generalizar e aplicar conhecimento em 
+                        contextos distintos. Na prática, isso eleva os dados ao mesmo 
+                        patamar de importância dos algoritmos e da capacidade 
+                        computacional.
+                    </p>
+                    
+                    <p>
+                        Os resultados do estudo apontam que métodos integrados e 
+                        dados de qualidade permitem desenvolver <strong>agentes de IA mais 
+                        versáteis</strong>, capazes de aprender e atuar em múltiplas áreas 
+                        simultaneamente e de forma complementar. Essa estratégia 
+                        pode reduzir custos e prazos de desenvolvimento ao permitir 
+                        que o mesmo modelo opere em diferentes tarefas com menos 
+                        necessidade de ajustes manuais.
+                    </p>
+                    
+                    <p>
+                        A integração entre diferentes áreas favorece ganhos que 
+                        ultrapassam os limites de cada domínio individual, apontando 
+                        para o desenvolvimento de <strong>sistemas de inteligência artificial mais 
+                        completos e avançados</strong>.
+                    </p>
+                </div>
+            </article>
+
+            <article class="content-article">
+                <div class="article-header">
+                    <h2 class="article-title">EUA e China: divulgação dos planos de ação em IA pode definir rumos globais</h2>
+                    <span class="tag">Produto</span>
+                </div>
+                    <div class="article-content">
+                        <p>
+                            Na semana passada, os Estados Unidos lançaram oficialmente seu novo plano estratégico de IA, trazendo diretrizes que 
+                            influenciam o mercado, a governança e as oportunidades tecnológicas. Poucos dias depois, durante o <strong>WAIC</strong> (World Artificial Intelligence Conference) 2025, em Xangai, a Zup pode ver de perto como a China também está desenhando suas estratégias e prioridades para o avanço em inteligência artificial.
+                        </p>
+                        
+                        <p>
+                            Hoje, os Estados Unidos seguem liderando o cenário global de IA com os maiores laboratórios, as <em>big techs</em> mais influentes e a maior fatia dos investimentos em IA. Mas a China vem reduzindo essa vantagem a passos largos, investindo pesado em infraestrutura, aplicando IA em escala nacional e impulsionando sua evolução com um ecossistema de modelos <em>open source</em> e movimentos significativos em design e fabricação de semicondutores.
+                        </p>
+                    
+                        <h3 class="article-subtitle"><strong>Plano dos EUA - "Winning the Race: America's AI Action Plan"</strong></h3>
+                        
+                        <p>
+                            No último dia 23, a Casa Branca lançou o <em>"Winning the Race: America's AI Action Plan"</em>, um plano nacional para manter os Estados Unidos na liderança global da inteligência artificial. O documento traz ações imediatas para acelerar a pesquisa, destravar infraestrutura e proteger a soberania tecnológica do país. Em resumo: os americanos querem ganhar a corrida da IA no mundo.
+                        </p>
+                        
+                        <p>
+                            O plano contém diversas ações políticas imediatas definidas sob <strong>três pilares principais</strong>:
+                        </p>
+                        
+                        <ul>
+                            <li><strong>Inovação</strong>: aposta em arquiteturas <em>open source</em>, aceleração da pesquisa e redução de vieses em sistemas;</li>
+                            <li><strong>Infraestrutura</strong>: construção de <em>data centers</em>, reforço na rede elétrica e desburocratização de licenças;</li>
+                            <li><strong>Diplomacia e soberania tecnológica</strong>: foca na exportação de tecnologia para aliados e mais controle sobre a influência chinesa.</li>
+                        </ul>
+                        
+                        <p>
+                            O plano aposta na desregulamentação para manter o ritmo, evita normas locais que possam travar o setor privado e foca no crescimento econômico com o mínimo de entrave regulatório. Em suma, prioriza ritmo rápido da inovação mesmo que isso implique menor supervisão em certos aspectos.
+                        </p>
+                    
+                        <h3 class="article-subtitle"><strong>Plano da China – global e com foco em aplicação real</strong></h3>
+                        
+                        <p>
+                            No WAIC, a China propôs criar um <strong>organismo internacional para governança de IA</strong> e lançou um mapa global de regras, reunindo leis e diretrizes de vários países. O objetivo é facilitar a troca de informações entre governos e alinhar regulações. O mapa funciona como um <em>"radar" internacional</em> que permite à China acompanhar, de forma macro e quase em tempo real, todas as atualizações globais em legislações de IA, antecipando tendências e reforçando seu papel nas discussões de governança.
+                        </p>
+                        
+                        <p>
+                            Durante a imersão China, no WAIC, ficou claro que o avanço do país em IA faz parte de um plano maior e superestruturado, com projetos como o <strong>Made in China 2025</strong> e o <strong>China Standards 2035</strong>, que miram a liderança não só em IA, mas também em semicondutores, biotecnologia e computação quântica. O segredo está na mobilização do governo, setor privado e sociedade. Empresas como <strong>Huawei</strong> e <strong>Alibaba</strong> já trabalham com o governo para implementar IA em larga escala, acelerando a adoção e criando padrões que podem influenciar o mundo todo.
+                        </p>
+                        
+                        <p>
+                            Nos semicondutores, a Huawei quer competir com a <strong>NVIDIA</strong> combinando muitos chips menores, enquanto a China acelera a independência tecnológica. Esse modelo lembra o salto dos carros elétricos: depois de ficar para trás nos motores a combustão, virou referência global ao apostar em elétricos – outro ponto destacado durante a imersão do WAIC. Vale destacar que as restrições de exportação dos EUA só aumentaram o incentivo para a China investir pesado em tecnologia própria, acelerando o desenvolvimento interno.
+                        </p>
+                    
+                        <h3 class="article-subtitle"><strong>Comparativo rápido – EUA vs China</strong></h3>
+                    
+                        <div class="article-image">
+                            <img src="assets/comparativo-eua-china.png" 
+                                 alt="Tabela comparativa entre estratégias de IA dos EUA e China, mostrando aspectos como visão geral, regulação, governança global, infraestrutura interna e foco de aplicação" 
+                                 class="comparison-table"/>
+                        </div>
+                    
+                        <p>
+                            Em meio a esse cenário de avanços globais em IA, a presença da Zup no WAIC mostra que estamos ligados no que há de mais estratégico no setor, não só acompanhando tendências, mas trazendo aprendizados práticos para dentro de casa. Esse olhar global alimenta nossas decisões e inspira a evolução de produtos como o <strong>StackSpot</strong>, visando navegar tanto pelas demandas do mercado americano quanto pelos desafios do ecossistema chinês.
+                        </p>
+                        
+                        <p class="article-note">
+                            <em>* O documento oficial do plano de ação em IA ainda não foi disponibilizado na íntegra para o grande público.</em>
+                        </p>
+                </div>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <!-- Mensagem de agradecimento e feedback -->
+                <div class="footer-feedback">
+                    <p class="feedback-message">Obrigado por nos acompanhar até o fim!</p>
+                    <p class="feedback-text">
+                        Gostou? <a href="https://zup1.typeform.com/fwdinsights" target="_blank">Deixe seu feedback</a>.
+                    </p>
+                </div>
+                
+                <!-- Powered by StackSpot AI -->
+                <div class="footer-powered">
+                    <!-- 
+                        "Powered by StackSpot AI": Credita a tecnologia que dá suporte ao nosso conteúdo.
+                        Atualmente sem link para manter foco no CTA principal abaixo.
+                    -->
+                    <span class="powered-label">Powered by</span>
+                    <img src="assets/StackSpotAI-grafismo.png" 
+                         alt="Logo StackSpotAI" 
+                         class="powered-logo"/>
+                    <span class="powered-text sr-only">StackSpotAI</span>
+                </div>
+                
+                <!-- Separador -->
+                <hr class="footer-divider">
+                
+                <!-- Navegação e CTA -->
+                <!-- 
+                    NOTA: Os links "Sobre", "Contato" e "Newsletter" abaixo ainda não estão funcionais.
+                    São opções preparadas pensando em escalarmos o Zup Labs Insights para um público 
+                    externo à Zup. Por enquanto, servem apenas como estrutura do layout.
+                -->
+                <div class="footer-navigation">
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Sobre</a>
+                        <a href="#" class="footer-link">Contato</a>
+                        <a href="#" class="footer-link">Newsletter</a>
+                    </div>
+                    <div class="footer-cta">
+                        <!-- 
+                            CTA "Conheça o StackSpot AI": Call-to-Action estratégico para incentivar 
+                            os leitores a explorarem ativamente o StackSpot após consumirem nosso conteúdo.
+                            
+                            ALTERNATIVA: Se quisermos remover este CTA, podemos transferir o link 
+                            para o símbolo do StackSpot AI em "Powered by" acima.
+                        -->
+                        <a href="https://stackspot.com" target="_blank" class="cta-button">
+                            Conheça o StackSpot AI
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Copyright -->
+                <p class="footer-copyright">&copy; 2025 Zup Labs Insights. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
