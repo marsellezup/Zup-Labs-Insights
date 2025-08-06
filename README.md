@@ -1,4 +1,4 @@
-# Zup Labs Insights - Template de Newsletter
+# Zup Labs Insights - Template 
 
 Este template foi criado para facilitar a criação e edição do Zup Labs Insights. Aqui estão as instruções para personalizá-lo e usá-lo.
 
@@ -59,3 +59,4 @@ O CSS inclui estilos para:
 - **Código** (`<code>` e `<pre>`)
 - **Citações** (você pode adicionar `<blockquote>`)
 - **Imagens** (responsivas por padrão)
+
