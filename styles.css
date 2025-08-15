@@ -425,8 +425,8 @@ html {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: #ded4d4; /* Mudança: cor mais escura para melhor contraste */
+    color: #4b1620; /* Garantindo texto branco */
     text-decoration: none;
     padding: 0.6rem 1.2rem;
     border-radius: 6px;
@@ -435,8 +435,15 @@ html {
 }
 
 .footer-cta .cta-button:hover {
-    background-color: #d68a6c;
+    background-color: #dfd3d3; /* Cor ligeiramente mais clara no hover */
     transform: translateY(-1px);
+    color: #852838;
+}
+
+.footer-cta .cta-button:focus {
+    outline: 2px solid #ffffff; /* Outline branco para contraste no foco */
+    outline-offset: 2px;
+    background-color: #A0522D;
 }
 
 /* Copyright */
@@ -694,12 +701,53 @@ li {
 }
 
 /* Estilos para subtítulos dentro do artigo */
+.article-content a:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+/* Estilos para figuras e imagens */
+.article-figure {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.article-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+}
+
+.image-caption {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    font-style: italic;
+    padding: 0 1rem;
+}
+
+/* Estilos para subtítulos dentro do artigo */
 .article-subtitle {
     font-family: var(--font-display);
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--text-primary);
     margin: 2rem 0 1rem 0;
+}
+
+/* Responsividade para imagens em dispositivos móveis */
+@media (max-width: 768px) {
+    .image-caption {
+        font-size: 0.85rem;
+        padding: 0 0.5rem;
+    }
+    
+    .comparison-table-container {
+        margin: 1rem -0.5rem;
+        border-radius: 8px;
+    }
 }
 
 /* Estilos para tabelas de comparação */
@@ -730,7 +778,7 @@ li {
 }
 
 .comparison-table thead {
-    background-color: var(--primary-color);
+    background-color: var(--text-primary); /* Mudança: de var(--primary-color) para var(--text-primary) */
 }
 
 .comparison-table thead th {
@@ -739,7 +787,7 @@ li {
     font-weight: 600;
     text-align: center;
     vertical-align: middle;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--text-primary); /* Mudança: de var(--primary-color) para var(--text-primary) */
 }
 
 .comparison-table tbody tr {

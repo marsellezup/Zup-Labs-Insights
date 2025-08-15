@@ -20,7 +20,7 @@
             </div>
             <div class="title-section">
                 <h1 class="main-title">Zup Labs Insights</h1>
-                <div class="edition-number">Edição #11</div>
+                <div class="edition-number">Edição #13</div>
             </div>
             <div class="divider"></div>
         </header>
@@ -40,18 +40,17 @@
             <div class="summary-grid">
                 <a href="#artigo-1" class="summary-item">
                     <span class="tag">Engenharia</span>
-                    <h3 class="summary-title">Arquiteturas descobertas por máquinas: IA expandindo as habilidades
-                        humanas</h3>
+                    <div class="summary-title">Chain-of-Thought em LLMs: limites, fragilidades e implicações</div>
                 </a>
                 <a href="#artigo-2" class="summary-item">
                     <span class="tag">Engenharia</span>
-                    <h3 class="summary-title">Transferindo inteligência: como o aprendizado em um domínio pode
-                        impulsionar a IA em outros</h3>
+                    <div class="summary-title">Como construir agentes LLM eficientes: estudo da OPPO revela estratégias
+                        para reduzir custos sem perder desempenho</div>
                 </a>
                 <a href="#artigo-3" class="summary-item">
-                    <span class="tag">Produto</span>
-                    <h3 class="summary-title">EUA e China: divulgação dos planos de ação em IA pode definir rumos
-                        globais</h3>
+                    <span class="tag">Engenharia</span>
+                    <div class="summary-title">Classificação de sistemas de IA Agentes: uma tipologia para avaliar e
+                        orientar o desenvolvimento de IA autônoma</div>
                 </a>
             </div>
         </section>
@@ -62,350 +61,479 @@
         <main class="main-content">
             <article class="content-article" id="artigo-1">
                 <div class="article-header">
-                    <h2 class="article-title">Arquiteturas descobertas por máquinas: IA expandindo as habilidades
-                        humanas</h2>
+                    <h2 class="article-title"><span lang="en">Chain-of-Thought</span> em <span lang="en">LLMs</span>:
+                        limites, fragilidades e implicações</h2>
                     <span class="tag">Engenharia</span>
                 </div>
                 <div class="article-content">
-                    <p>
-                        O estudo <em>"AlphaGo Moment for Model Architecture Discovery"</em>,
-                        conduzido por pesquisadores da Shanghai Jiao Tong University,
-                        em colaboração com a SII (Instituto de Inovação em IA de Xangai)
-                        e o laboratório GAIR (General AI Research Lab), apresentou o
-                        <strong>ASI-ARCH</strong>, um sistema autônomo capaz de propor, implementar,
-                        treinar e avaliar novas arquiteturas de IA sem intervenção
-                        humana direta.
+                    <p><strong>O uso de <span lang="en">Chain-of-Thought</span> (<span lang="en">CoT</span>, ou "cadeia
+                            de raciocínio") em <span lang="en">Large Language Models (LLMs)</span> popularizou-se como
+                            técnica para induzir respostas estruturadas e aparentemente "racionais"</strong> em tarefas
+                        que envolvem raciocínio lógico, matemática ou inferência. Na prática, <span
+                            lang="en">prompts</span> como "vamos pensar passo a passo" levam o modelo a decompor o
+                        problema em etapas intermediárias antes de chegar a uma conclusão. Essa abordagem ganhou
+                        destaque por melhorar o desempenho em <span lang="en">benchmarks</span>, incentivando a
+                        percepção de que <span lang="en">LLMs</span> seriam capazes de simular processos de raciocínio
+                        humano. <strong>No entanto, trabalhos recentes vêm questionando a real natureza dessa
+                            "racionalidade".</strong> O artigo "<em lang="en">Is Chain-of-Thought Reasoning of LLMs a
+                            Mirage? A Data Distribution Lens</em>", do laboratório <span lang="en">Data Mining and
+                            Machine Learning Lab</span>, da <span lang="en">Arizona State University</span>, propõe uma
+                        <strong>análise detalhada dessas limitações sob uma nova perspectiva: a dependência estatística
+                            dos dados de treinamento.</strong>
+                    </p>
+
+                    <p>O estudo argumenta que, embora as cadeias de raciocínio pareçam coerentes, frequentemente cometem
+                        erros lógicos ou chegam a conclusões inconsistentes, <strong>especialmente quando expostas a
+                            perguntas fora dos padrões vistos durante o treinamento.</strong> Um exemplo apresentado
+                        envolve a análise de um ano bissexto: o modelo descreve corretamente as regras, mas conclui que
+                        1776 seria "um ano bissexto e um ano normal", revelando falhas de lógica mesmo com uma
+                        explicação detalhada. Isso sugere que <strong>a habilidade do modelo está mais relacionada à
+                            reprodução de padrões linguísticos aprendidos do que à realização de inferência
+                            genuína.</strong>
+                    </p>
+
+                    <p>O artigo propõe um "olhar de distribuição de dados" (<em lang="en">data distribution lens</em>),
+                        indicando que <strong>o sucesso do <span lang="en">CoT</span> depende fortemente do quanto o
+                            dado de teste se assemelha ao universo visto pelo modelo durante o treinamento.</strong>
+                        Para investigar essa hipótese, os autores criaram o <span lang="en">DataAlchemy</span>, um
+                        ambiente experimental totalmente controlado, onde <span lang="en">LLMs</span> são treinados do
+                        zero com conjuntos sintéticos cujas propriedades podem ser manipuladas com rigor. Isso
+                        possibilita avaliar, sem interferências externas, como o <span lang="en">CoT</span> se comporta
+                        diante de diferentes tipos de variação entre treino e teste. <strong>Três dimensões principais
+                            foram avaliadas: (1) generalização de tarefa, (2) generalização de comprimento e (3)
+                            generalização de formato.</strong>
+                    </p>
+
+                    <p><strong>A generalização de tarefa explora se o modelo consegue transferir os padrões de
+                            raciocínio para novos tipos de problema</strong>, por exemplo, aplicando transformações
+                        algébricas ou lógicas diferentes das vistas no treinamento. O resultado indica que <strong>a
+                            performance do <span lang="en">CoT</span> cai drasticamente sempre que a tarefa de teste
+                            envolve operações ou sequências inéditas.</strong> O modelo tende a "forçar" respostas
+                        baseadas em padrões conhecidos, mas raramente acerta quando confrontado com transformações
+                        efetivamente novas.</p>
+
+
+                    <p>A generalização de comprimento investiga se o raciocínio do <span lang="en">CoT</span> se mantém
+                        ao lidar com cadeias de passos maiores ou menores do que as praticadas durante o treinamento. Os
+                        autores demonstram que, mesmo para variações modestas, o desempenho do modelo se deteriora.
+                        <strong>O erro segue uma curva gaussiana: quanto mais distante do comprimento médio do
+                            treinamento, maior a taxa de falhas.</strong>
+                    </p>
+
+                    <p>Já a generalização de formato trata da sensibilidade a pequenas mudanças na estrutura ou
+                        apresentação do <span lang="en">prompt</span>. Inserções, deleções ou modificações de <span
+                            lang="en">tokens</span>, mesmo sem alterar o sentido do problema, tendem a gerar quedas
+                        significativas de desempenho. <strong>Em geral, o modelo depende fortemente da familiaridade
+                            superficial com o padrão do <span lang="en">prompt</span> para manter o raciocínio.</strong>
+                    </p>
+
+                    <p>O estudo também investiga a influência de fatores como ajuste fino supervisionado (<em
+                            lang="en">Supervised Fine-Tuning</em>, <span lang="en">SFT</span>), temperatura de
+                        amostragem e tamanho do modelo. <strong>O <span lang="en">SFT</span> ajuda o modelo a se adaptar
+                            rapidamente a novos padrões, mas isso apenas amplia a bolha de distribuição conhecida, não
+                            promove generalização abstrata.</strong> Variações de temperatura e de escala do modelo não
+                        alteram o padrão de fragilidade observado.
+                    </p>
+
+                    <p>Com base nesses achados, o artigo conclui que <strong>o <span lang="en">CoT</span>, ainda que
+                            útil para melhorar resultados em domínios familiares, não é uma solução robusta para
+                            problemas de raciocínio em contextos críticos ou sujeitos a variações frequentes de tarefa e
+                            formato.</strong> O risco é confiar em explicações plausíveis, mas logicamente frágeis,
+                        também chamadas de "<em lang="en">nonsense fluente</em>", que podem mascarar erros graves. Por
+                        isso, o artigo recomenda fortemente a realização de testes fora da distribuição de treinamento
+                        (<em lang="en">out-of-distribution</em>, <span lang="en">OOD</span>), simulando cenários
+                        adversariais para validar a robustez do sistema. Além disso, destaca que <strong>ajustes finos
+                            são paliativos e não resolvem o problema central: a ausência de capacidade de inferência
+                            abstrata nos <span lang="en">LLMs</span> atuais.</strong>
+                    </p>
+
+                    <p>Para pesquisadores, o desafio é propor arquiteturas e métodos de treinamento que rompam com a
+                        limitação de replicar padrões e avancem para mecanismos que incorporem inferência lógica e
+                        flexibilidade real. Já para times de desenvolvimento e liderança, fica um alerta: <strong><span
+                                lang="en">CoT</span> deve ser auditado e validado rigorosamente em todas as etapas do
+                            ciclo de desenvolvimento, com a consciência de que sua confiabilidade está condicionada à
+                            semelhança entre os dados atuais e os vistos pelo modelo no passado.</strong>
                     </p>
 
                     <p>
-                        O sistema demonstra potencial para identificar soluções em
-                        arquitetura que vão além do alcance dos métodos tradicionais,
-                        superando inclusive modelos desenvolvidos por especialistas
-                        humanos. Ele opera de maneira autônoma: gera hipóteses de
-                        novas arquiteturas, transforma essas ideias em código, treina, e
-                        avalia os resultados combinando métricas objetivas com uma
-                        análise qualitativa conduzida por outro modelo de linguagem.
+                        <a href="https://arxiv.org/pdf/2508.01191" hreflang="en" type="application/pdf" target="_blank"
+                            rel="noopener noreferrer">
+                            Confira o artigo <cite lang="en"><em>"Is Chain-of-Thought Reasoning of LLMs a Mirage? A Data
+                                    Distribution Lens"</em></cite>, completo, em inglês.
+                        </a>
                     </p>
 
-                    <p>
-                        Diferente do <em>Neural Architecture Search</em> (NAS) tradicional, que se
-                        restringe a combinar blocos pré‑definidos por humanos, o
-                        ASI‑ARCH não depende dessas restrições. O estudo focou em
-                        arquiteturas baseadas em <em>attention</em>, mecanismo central nos
-                        modelos modernos por permitir que o sistema priorize partes
-                        relevantes da entrada. Apesar de estar no centro de soluções
-                        como o <em>Transformer</em>, o <em>attention</em> traz limitações importantes,
-                        sobretudo em termos de custo computacional. Portanto, o
-                        trabalho investiga se seria possível que uma IA identificasse
-                        alternativas mais eficientes de forma autônoma.
-                    </p>
 
-                    <p>
-                        De acordo com os autores do estudo, o sistema executou <strong>1.773
-                            experimentos</strong>, acumulando mais de <strong>20 mil horas de
-                            processamento</strong> em unidades gráficas (GPU). Como resultado,
-                        identificou <strong>106 novas arquiteturas de alto desempenho</strong>, muitas
-                        delas superiores às desenvolvidas por especialistas humanos. O
-                        estudo sugere que quanto mais poder computacional disponível,
-                        maior o potencial de inovação, indicando o início de uma "lei de
-                        escala" para descobertas em IA.
-                    </p>
-
-                    <p>
-                        Os principais avanços técnicos incluem novos mecanismos de
-                        roteamento entre camadas, mecanismos mais eficientes para a
-                        memória de longo prazo e estruturas hierárquicas capazes de
-                        integrar dados locais e globais. Essas descobertas mostraram
-                        desempenho superior em tarefas de linguagem natural, como
-                        compreensão de contexto, raciocínio e análise de informações,
-                        superando modelos reconhecidos como <strong>DeltaNet</strong> e <strong>Mamba2</strong>.
-                    </p>
-
-                    <p>
-                        Do ponto de vista de gestão e inovação, o ASI-ARCH representa
-                        uma <strong>mudança de paradigma</strong>: a evolução dos modelos de IA deixa
-                        de depender apenas da criatividade e do tempo dos especialistas
-                        e passa a ser guiada pelo poder computacional disponível. Isso
-                        permite acelerar a criação de algoritmos em escala industrial,
-                        como já aconteceu com a automação nas linhas de produção.
-                        Para quem desenvolve produtos com LLMs, os ganhos são claros:
-                        ciclos de inovação muito mais curtos e uma diversidade de
-                        soluções que foge das limitações humanas, o que pode trazer
-                        saltos significativos de eficiência.
-                    </p>
-
-                    <p>
-                        Por outro lado, o estudo também destaca <strong>desafios importantes</strong>. O
-                        custo computacional ainda é elevado, já que cada experimento
-                        demanda milhares de horas de GPU, e as arquiteturas
-                        descobertas precisam ser otimizadas antes do uso prático em
-                        produção. Todo o código e resultados estão disponíveis em
-                        <em>open source</em>, o que abre espaço para adoção e adaptação por outras
-                        organizações. Para executivos, acompanhar esse avanço pode ser
-                        um diferencial estratégico, já que a própria IA passa a reinventar o
-                        desenvolvimento de novos modelos.
-                    </p>
                 </div>
             </article>
 
             <article class="content-article" id="artigo-2">
                 <div class="article-header">
-                    <h2 class="article-title">Transferindo inteligência: como o aprendizado em um domínio pode
-                        impulsionar a IA em outros</h2>
+                    <h2 class="article-title">Como construir agentes <span lang="en">LLM</span> eficientes: estudo da
+                        <span lang="en">OPPO</span> revela estratégias para reduzir custos sem perder desempenho
+                    </h2>
                     <span class="tag">Engenharia</span>
                 </div>
                 <div class="article-content">
-                    <p>
-                        O estudo <em>"Can One Domain Help Others? A Data‑Centric Study
-                            on Multi‑Domain Reasoning via Reinforcement Learning"</em>,
-                        conduzido por pesquisadores chineses da Shanghai Artificial
-                        Intelligence Laboratory, analisou se IAs conseguem transferir
-                        aprendizado de um domínio (como matemática, lógica ou
-                        programação) para melhorar o desempenho em outros.
+
+                    <p>A adoção de agentes autônomos baseados em grandes modelos de linguagem (<span lang="en">Large
+                            Language Models, LLMs</span>) já se tornou uma das principais tendências em sistemas
+                        inteligentes para aplicações corporativas e industriais. No entanto, o crescimento das
+                        capacidades desses agentes trouxe consigo um problema prático: os custos operacionais aumentam
+                        rapidamente, podendo inviabilizar o uso em escala. O estudo “<em lang="en">Efficient Agents:
+                            Building Effective Agents While Reducing Cost</em>”, conduzido pela equipe de <span
+                            lang="en">IA</span> da <span lang="en">OPPO</span> (<span lang="en">OPPO AI Agent
+                            Team</span>), apresenta uma análise detalhada do equilíbrio entre eficiência e desempenho em
+                        agentes <span lang="en">LLM</span>, propondo soluções concretas para torná-los economicamente
+                        viáveis sem sacrificar sua efetividade.
                     </p>
 
-                    <p>
-                        Usando uma técnica de <em>reinforcement learning</em> (aprendizado por
-                        reforço) combinada com a abordagem <strong>RLVR</strong>, os pesquisadores
-                        mostraram que a transferência de conhecimento é possível,
-                        principalmente entre lógica e programação, onde os ganhos
-                        foram mais expressivos, indicando que o aproveitamento
-                        depende da proximidade entre os tipos de domínio.
+                    <p>O ponto de partida do artigo é o reconhecimento de que, embora a comunidade de processamento de
+                        linguagem natural (<span lang="en">NLP</span>) tenha historicamente priorizado o aumento do
+                        poder dos modelos, como visto na evolução do <span lang="en">BERT</span> para o <span
+                            lang="en">ChatGPT</span>, a busca por desempenho acabou relegando a otimização de custos a
+                        um segundo plano. Este padrão, que já motivou o surgimento do subcampo conhecido como <em
+                            lang="en">efficient NLP</em> (ou <span lang="en">NLP</span> eficiente), agora se repete no
+                        desenvolvimento de agentes <span lang="en">LLM</span>, especialmente à medida que aplicações
+                        reais exigem escalabilidade, latência baixa e sustentabilidade econômica.
                     </p>
 
-                    <p>
-                        O estudo destaca que o sucesso nesse tipo de aprendizado
-                        cruzado está diretamente relacionado à <strong>qualidade dos dados</strong>.
-                        Quanto mais variados, representativos e bem estruturados forem
-                        os dados de cada domínio, maior será a capacidade da
-                        inteligência artificial de generalizar e aplicar conhecimento em
-                        contextos distintos. Na prática, isso eleva os dados ao mesmo
-                        patamar de importância dos algoritmos e da capacidade
-                        computacional.
+                    <p>Para responder a essas demandas, o trabalho da <span lang="en">OPPO</span> faz três perguntas
+                        centrais:
                     </p>
 
-                    <p>
-                        Os resultados do estudo apontam que métodos integrados e
-                        dados de qualidade permitem desenvolver <strong>agentes de IA mais
-                            versáteis</strong>, capazes de aprender e atuar em múltiplas áreas
-                        simultaneamente e de forma complementar. Essa estratégia
-                        pode reduzir custos e prazos de desenvolvimento ao permitir
-                        que o mesmo modelo opere em diferentes tarefas com menos
-                        necessidade de ajustes manuais.
+                    <p><strong>1) Qual o grau de complexidade realmente necessário para as tarefas dos agentes?</strong>
                     </p>
 
-                    <p>
-                        A integração entre diferentes áreas favorece ganhos que
-                        ultrapassam os limites de cada domínio individual, apontando
-                        para o desenvolvimento de <strong>sistemas de inteligência artificial mais
-                            completos e avançados</strong>.
+                    <p><strong>2) Em que momento a adição de módulos extra começa a gerar retornos
+                            decrescentes?</strong>
                     </p>
+
+                    <p><strong>3) Quanto de eficiência pode ser obtido ao desenhar <span lang="en">frameworks</span> de
+                            agentes mais enxutos?</strong>
+                    </p>
+
+                    <p>Para responder a essas questões, os pesquisadores utilizaram o <span lang="en">benchmark
+                            GAIA</span> (<span lang="en">General AI Assistants</span>), que reúne tarefas complexas e de
+                        múltiplas etapas, avaliando diferentes escolhas de arquitetura, seleção de modelo, estratégias
+                        de planejamento, uso de ferramentas e mecanismos de memória.
+                    </p>
+
+                    <p>Um dos conceitos-chave introduzidos é o <strong><em lang="en">cost-of-pass</em></strong>,
+                        <strong>métrica que quantifica o custo monetário esperado para obter uma resposta correta em uma
+                            tarefa específica</strong>. O cálculo considera o número de <span lang="en">tokens</span>
+                        processados pelo <span lang="en">LLM</span> (entrada e saída) e o preço por <span
+                            lang="en">token</span> de cada provedor, corrigido pela taxa de sucesso do agente na tarefa.
+                        Essa métrica permite comparar, de forma objetiva, o impacto de cada componente do sistema na
+                        eficiência econômica, além do desempenho tradicional (medido pelo <em lang="en">pass@1</em>, ou
+                        seja, acerto na primeira tentativa).
+                    </p>
+
+                    <p>Os experimentos sistemáticos revelam que a escolha do <span lang="en">LLM backbone</span> é o
+                        fator mais determinante para o custo total. Modelos de ponta, como <span lang="en">Claude 3.7
+                            Sonnet (Anthropic)</span>, alcançam alta acurácia (61,8%), mas apresentam custo de operação
+                        até quatro vezes maior que alternativas como <span lang="en">GPT-4.1 (OpenAI)</span>, que,
+                        apesar de menos precisas (53,3%), oferecem melhor equilíbrio entre custo e desempenho. Modelos
+                        esparsos baseados em <span lang="en">MoE (Mixture of Experts)</span>, como <span
+                            lang="en">Qwen3-30B-A3B</span>, mostram grande eficiência com custos mínimos, mas sua <span
+                            lang="en">performance</span> ainda fica aquém para tarefas mais sofisticadas. Outro achado
+                        importante é que, à medida que a dificuldade da tarefa aumenta, o custo por acerto cresce
+                        exponencialmente nos grandes modelos de raciocínio, tornando sua aplicabilidade limitada para
+                        cenários de alta complexidade em larga escala.
+                    </p>
+
+                    <figure class="article-figure">
+                        <img src="assets/acuracia-vs-custo.png"
+                            alt="O gráfico de dispersão apresenta, no eixo horizontal (X), o custo por acerto (cost-of-pass, em dólares), variando de 0 a 4 em intervalos de 1. No eixo vertical (Y), está a acurácia (%) no benchmark GAIA, variando de 0 a 70 em intervalos de 10, de baixo para cima. Quanto mais à direita (X), maior o custo; quanto mais acima (Y), maior a acurácia. No canto superior direito, estão modelos de alta acurácia e alto custo: o Claude 3.7 Sonnet, acima de 60% de acurácia (Y) e próximo de 3 dólares de custo (X), e o o1, com cerca de 50% de acurácia (Y) e também próximo de 3 dólares de custo (X). No quadrante inferior esquerdo, com custo baixo (entre 0 e 1 dólar em X) e acurácia menor (entre 10% e 30% em Y), estão, de cima para baixo, o Qwen3-32B-A22B, o QwQ-32B e o Qwen3-30B-A3B. Mais à direita desses (X), mas ainda no quadrante esquerdo e mais acima (Y), está o GPT-4.1, com pouco acima de 50% de acurácia (Y) e cerca de 1 dólar de custo (X), indicando desempenho superior aos modelos mais baratos, porém com custo moderado."
+                            class="article-image">
+                        <figcaption class="image-caption">
+                            Relação entre acurácia (%) e custo por acerto (<em lang="en">cost-of-pass</em>, em <span
+                                lang="en">US$</span>) dos principais <span lang="en">LLMs backbone</span> no <span
+                                lang="en">benchmark GAIA</span>. No eixo horizontal, quanto mais à direita, maior a
+                            acurácia; no eixo vertical, quanto mais abaixo, menor o custo.
+                        </figcaption>
+                    </figure>
+
+                    <p>No que diz respeito a estratégias de inferência, o artigo avalia o <span lang="en">Best-of-N
+                            Sampling (BoN)</span>, em que o agente executa múltiplas simulações e seleciona a melhor
+                        resposta via modelo de recompensa. <strong>Embora eleve marginalmente a precisão, o aumento no
+                            consumo de <span lang="en">tokens</span> faz com que o custo por acerto cresça de 0,98 para
+                            1,28 ao se passar de <span lang="en">N=1</span> para <span lang="en">N=4</span>, mostrando
+                            que os ganhos não compensam o investimento extra.</strong> A recomendação, portanto, é
+                        limitar o uso dessas técnicas a casos muito específicos.
+                    </p>
+
+                    <p>O módulo de planejamento, responsável por decompor tarefas em etapas, também é analisado. O
+                        estudo mostra que aumentar o número máximo de etapas traz ganhos de desempenho até certo ponto,
+                        mas, a partir de um limite, apenas eleva os custos, sem impacto significativo na precisão. A
+                        prática de “<em lang="en">overthinking</em>” (alocar recursos excessivos a problemas simples) é
+                        identificada como um dos principais vilões da eficiência. Portanto, controlar a complexidade do
+                        planejamento é essencial para otimizar o uso dos agentes.
+                    </p>
+
+                    <p>Quanto ao uso de ferramentas externas, a pesquisa demonstra que <strong>escolhas simples, como
+                            limitar o número de fontes, preferir operações básicas (extração de elementos estáticos) e
+                            aumentar moderadamente a expansão de consultas (de 3 para 10), conseguem melhorar tanto a
+                            eficiência quanto a precisão, sem inflar o consumo de <span
+                                lang="en">tokens</span>.</strong>
+                    </p>
+
+                    <p>No módulo de memória, que armazena histórico de interações e raciocínio, os resultados são
+                        interessantes: a configuração mais simples, que armazena apenas observações e ações recentes,
+                        não só reduz o custo, como também melhora o desempenho (de 53,3% para 56,4% de acurácia) em
+                        comparação com soluções mais sofisticadas, como memórias resumidas ou híbridas, que tendem a
+                        acumular ruído e dificultar a recuperação de informações relevantes.
+                    </p>
+
+                    <p>Com base nesses achados, a equipe da <span lang="en">OPPO</span> propôs o <span
+                            lang="en">framework Efficient Agents</span>, cuja configuração ótima inclui: <strong>uso do
+                            <span lang="en">GPT-4.1</span>, limite de 8 etapas de planejamento, atualização de plano a
+                            cada etapa, múltiplas fontes de busca, expansão de até 5 consultas, memória simples e sem
+                            técnicas de <span lang="en">BoN</span>.</strong> Na comparação com as principais plataformas
+                        abertas, como <span lang="en">OWL (Optimized Workforce Learning)</span>, o <span
+                            lang="en">Efficient Agents</span> manteve 96,7% do desempenho, mas reduziu o custo
+                        operacional de <span lang="en">US$0,398</span> para <span lang="en">US$0,228</span> – uma
+                        economia de 28,4% no <span lang="en">cost-of-pass</span>. Em relação a outros <span
+                            lang="en">frameworks</span>, como <span lang="en">SmolAgents</span>, a diferença de custo é
+                        ainda mais expressiva, com ganhos superiores a 80%.
+                    </p>
+
+                    <p>Do ponto de vista prático, esses resultados têm implicações diretas para desenvolvedores e
+                        gestores técnicos: é possível construir agentes autônomos eficazes sem recorrer a arquiteturas
+                        complexas e caras, bastando adotar escolhas informadas para cada componente do sistema. O artigo
+                        também aponta caminhos futuros, como o desenvolvimento de <span lang="en">frameworks</span>
+                        adaptativos, capazes de ajustar dinamicamente sua complexidade conforme o perfil da tarefa, e o
+                        refinamento de métricas econômicas para orientar decisões arquiteturais.
+                    </p>
+
+                    <p><a href="https://arxiv.org/html/2508.02694v1" target="_blank" rel="noopener noreferrer"
+                            hreflang="en">Confira o artigo "<em lang="en">Efficient Agents:
+                                Building Effective Agents While Reducing Cost</em>" original e na íntegra, em <span
+                                lang="en">inglês</span>.</a></p>
                 </div>
             </article>
 
             <article class="content-article" id="artigo-3">
                 <div class="article-header">
-                    <h2 class="article-title">EUA e China: divulgação dos planos de ação em IA pode definir rumos
-                        globais</h2>
-                    <span class="tag">Produto</span>
+                    <h2 class="article-title">Classificação de sistemas de IA Agentes: uma tipologia para avaliar e
+                        orientar o desenvolvimento de IA autônoma</h2>
+                    <span class="tag">Engenharia</span>
                 </div>
                 <div class="article-content">
-                    <p>
-                        Na semana passada, os Estados Unidos lançaram oficialmente seu novo plano estratégico de IA,
-                        trazendo diretrizes que
-                        influenciam o mercado, a governança e as oportunidades tecnológicas. Poucos dias depois, durante
-                        o <strong>WAIC</strong> (World Artificial Intelligence Conference) 2025, em Xangai, a Zup pode
-                        ver de perto como a China também está desenhando suas estratégias e prioridades para o avanço em
-                        inteligência artificial.
+                    <p>A rápida evolução dos sistemas de inteligência artificial (IA) está levando a uma transformação
+                        fundamental: de ferramentas passivas, que apenas executam comandos, a sistemas agentes capazes
+                        de perceber, raciocinar, agir e adaptar-se de forma autônoma. Esse movimento, conhecido como
+                        "virada <span lang="en">agentic</span>" (<em lang="en">agentic turn</em>), impacta
+                        significativamente a indústria de <span lang="en">software</span>, pois muda a relação entre
+                        humanos e sistemas de IA, ampliando o potencial de automação de tarefas complexas, o que inclui
+                        desde assistentes de código até agentes que interagem com múltiplos sistemas e ambientes físicos
+                        ou virtuais.</p>
+
+                    <p>Pesquisadores da <span lang="en">Leipzig University</span> e da <span lang="en">TU
+                            Dresden</span>, na Alemanha, publicaram recentemente o estudo "<em lang="en">Exploring
+                            Agentic Artificial Intelligence Systems: Towards a Typological Framework</em>". O
+                        <strong>trabalho apresenta uma estrutura para compreender e classificar sistemas de inteligência
+                            artificial</strong> que não se limitam a responder passivamente, mas que agem de forma
+                        autônoma, adaptativa e interativa. Esses sistemas, chamados de <span lang="en">agentic
+                            AI</span>, representam um passo além de assistentes virtuais tradicionais, aproximando-se da
+                        capacidade de tomar decisões, planejar e executar tarefas com mínima intervenção humana.
                     </p>
 
-                    <p>
-                        Hoje, os Estados Unidos seguem liderando o cenário global de IA com os maiores laboratórios, as
-                        <em>big techs</em> mais influentes e a maior fatia dos investimentos em IA. Mas a China vem
-                        reduzindo essa vantagem a passos largos, investindo pesado em infraestrutura, aplicando IA em
-                        escala nacional e impulsionando sua evolução com um ecossistema de modelos <em>open source</em>
-                        e movimentos significativos em design e fabricação de semicondutores.
+                    <p>Segundo os autores, os primeiros sistemas de IA eram essencialmente ferramentas analíticas que
+                        processavam dados estruturados e executavam tarefas bem definidas. O avanço de modelos de larga
+                        escala, como os <span lang="en">Large Language Models (LLMs)</span>, ampliou radicalmente essa
+                        capacidade. Ao invés de apenas classificar informações, esses modelos, baseados em arquiteturas
+                        de <span lang="en">transformers</span>, conseguem gerar conteúdo, raciocinar sobre problemas
+                        complexos e se adaptar a diferentes contextos. O estudo explica que a <em
+                            lang="en">agenticness</em> (grau de agência) deve ser vista como um espectro, variando
+                        desde sistemas totalmente passivos até agentes capazes de estabelecer e executar objetivos por
+                        conta própria.</p>
+
+                    <p>O conceito de agência é aplicado a sistemas artificiais que demonstram comportamentos autônomos e
+                        adaptativos. Os autores argumentam que, com o surgimento de modelos avançados como <span
+                            lang="en">LLMs</span>, a IA passa a operar em patamares de agência inéditos, sendo capaz de
+                        planejar, decompor tarefas, aprender com experiências e agir em ambientes dinâmicos sem
+                        intervenção humana constante. Para construir a tipologia, os pesquisadores seguiram um processo
+                        de seis fases, incluindo revisão da literatura, extração de características de agentes
+                        existentes, criação de um "tipo ideal" como referência e avaliação com exemplos do mundo real.
                     </p>
 
-                    <h3 class="article-subtitle"><strong>Plano dos EUA - "Winning the Race: America's AI Action
-                            Plan"</strong></h3>
-
-                    <p>
-                        No último dia 23, a Casa Branca lançou o <em>"Winning the Race: America's AI Action Plan"</em>,
-                        um plano nacional para manter os Estados Unidos na liderança global da inteligência artificial.
-                        O documento traz ações imediatas para acelerar a pesquisa, destravar infraestrutura e proteger a
-                        soberania tecnológica do país. Em resumo: os americanos querem ganhar a corrida da IA no mundo.
-                    </p>
-
-                    <p>
-                        O plano contém diversas ações políticas imediatas definidas sob <strong>três pilares
-                            principais</strong>:
-                    </p>
-
-                    <ul>
-                        <li><strong>Inovação</strong>: aposta em arquiteturas <em>open source</em>, aceleração da
-                            pesquisa e redução de vieses em sistemas;</li>
-                        <li><strong>Infraestrutura</strong>: construção de <em>data centers</em>, reforço na rede
-                            elétrica e desburocratização de licenças;</li>
-                        <li><strong>Diplomacia e soberania tecnológica</strong>: foca na exportação de tecnologia para
-                            aliados e mais controle sobre a influência chinesa.</li>
-                    </ul>
-
-                    <p>
-                        O plano aposta na desregulamentação para manter o ritmo, evita normas locais que possam travar o
-                        setor privado e foca no crescimento econômico com o mínimo de entrave regulatório. Em suma,
-                        prioriza ritmo rápido da inovação mesmo que isso implique menor supervisão em certos aspectos.
-                    </p>
-
-                    <h3 class="article-subtitle"><strong>Plano da China – global e com foco em aplicação real</strong>
-                    </h3>
-
-                    <p>
-                        No WAIC, a China propôs criar um <strong>organismo internacional para governança de IA</strong>
-                        e lançou um mapa global de regras, reunindo leis e diretrizes de vários países. O objetivo é
-                        facilitar a troca de informações entre governos e alinhar regulações. O mapa funciona como um
-                        <em>"radar" internacional</em> que permite à China acompanhar, de forma macro e quase em tempo
-                        real, todas as atualizações globais em legislações de IA, antecipando tendências e reforçando
-                        seu papel nas discussões de governança.
-                    </p>
-
-                    <p>
-                        Durante a imersão China, no WAIC, ficou claro que o avanço do país em IA faz parte de um plano
-                        maior e superestruturado, com projetos como o <strong>Made in China 2025</strong> e o
-                        <strong>China Standards 2035</strong>, que miram a liderança não só em IA, mas também em
-                        semicondutores, biotecnologia e computação quântica. O segredo está na mobilização do governo,
-                        setor privado e sociedade. Empresas como <strong>Huawei</strong> e <strong>Alibaba</strong> já
-                        trabalham com o governo para implementar IA em larga escala, acelerando a adoção e criando
-                        padrões que podem influenciar o mundo todo.
-                    </p>
-
-                    <p>
-                        Nos semicondutores, a Huawei quer competir com a <strong>NVIDIA</strong> combinando muitos chips
-                        menores, enquanto a China acelera a independência tecnológica. Esse modelo lembra o salto dos
-                        carros elétricos: depois de ficar para trás nos motores a combustão, virou referência global ao
-                        apostar em elétricos – outro ponto destacado durante a imersão do WAIC. Vale destacar que as
-                        restrições de exportação dos EUA só aumentaram o incentivo para a China investir pesado em
-                        tecnologia própria, acelerando o desenvolvimento interno.
-                    </p>
-
-                    <h3 class="article-subtitle"><strong>Comparativo rápido – EUA vs China</strong></h3>
+                    <p><strong>A tipologia parte de quatro condições fundamentais para que um sistema seja considerado
+                            agente: interatividade, autonomia, adaptabilidade e normatividade.</strong> Essas condições
+                        são detalhadas e operacionalizadas em oito dimensões ordenadas, cada uma com quatro níveis de
+                        sofisticação, formando um espectro contínuo de <span lang="en">agency</span>: escopo de
+                        conhecimento, percepção, raciocínio, interatividade, modo de operação, contextualização,
+                        autoaperfeiçoamento e alinhamento normativo. Por exemplo, no eixo "Percepção", um sistema pode
+                        variar de não ter entrada sensorial alguma até integrar múltiplas modalidades (texto, imagem,
+                        áudio) de forma intuitiva. Já em "Raciocínio", o progresso vai desde respostas imediatas e
+                        isoladas até a capacidade de modelar crenças e intenções de outros agentes, algo próximo ao que
+                        chamamos de <em lang="en">theory of mind</em>.</p>
 
                     <div class="comparison-table-container">
                         <table class="comparison-table">
-                            <caption>
-                                Comparação das estratégias em IA entre EUA e China
-                            </caption>
+                            <caption>Dimensões da tipologia de sistemas de IA agentes</caption>
                             <thead>
                                 <tr>
-                                    <th scope="col"><strong>Aspecto</strong></th>
-                                    <th scope="col"><strong>EUA</strong></th>
-                                    <th scope="col"><strong>China</strong></th>
+                                    <th scope="col"><strong>Dimensão</strong></th>
+                                    <th scope="col"><strong>Característica ideal</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row"><strong>Visão geral</strong></th>
-                                    <td>Manter a liderança global em IA, apostar em arquitetura open-source e
-                                        infraestrutura rápida</td>
-                                    <td>Ser referência global, colocando IA em todos os setores da sociedade</td>
+                                    <th scope="row">Escopo de conhecimento</th>
+                                    <td>Abrange desde bases de conhecimento limitadas até domínio amplo e dinâmico,
+                                        atualizado em tempo real e integrando múltiplas fontes.</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row"><strong>Regulação</strong></th>
-                                    <td>Desregulamentação ampla e pressão sobre regulações estaduais que possam frear o
-                                        avanço</td>
-                                    <td>Regulamentação centralizada; licenciamento governamental</td>
+                                    <th scope="row">Percepção</th>
+                                    <td>Capacidade de captar e processar informações do ambiente, evoluindo de percepção
+                                        nula a integração multimodal (texto, imagem, áudio, etc.).</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row"><strong>Governança global</strong></th>
-                                    <td>Defesa do padrão ocidental, exportação e alianças</td>
-                                    <td>Proposta de organismo internacional amplo e inclusivo</td>
+                                    <th scope="row">Raciocínio</th>
+                                    <td>Vai de respostas imediatas a raciocínio estruturado, planejamento de múltiplas
+                                        etapas e capacidade de modelar crenças e intenções de outros agentes.</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row"><strong>Infraestrutura interna</strong></th>
-                                    <td>Construção de data centers, reforço da rede elétrica e qualificação da mão de
-                                        obra</td>
-                                    <td>Estímulo estatal massivo, alianças público-privadas</td>
+                                    <th scope="row">Interatividade</th>
+                                    <td>De interações esporádicas a engajamento contínuo e adaptativo com usuários,
+                                        outros
+                                        sistemas e agentes.</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row"><strong>Foco de aplicação</strong></th>
-                                    <td>Pesquisa de ponta e modelo de IA de fronteira</td>
-                                    <td>Ferramentas para segurança, saúde e serviços governamentais</td>
+                                    <th scope="row">Modo de operação</th>
+                                    <td>De atuação apenas sob demanda a operação contínua e autônoma, antecipando
+                                        necessidades e adaptando ações.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Contextualização</th>
+                                    <td>Evolui de respostas descontextualizadas para uso avançado de contexto, ajustando
+                                        decisões e comunicação conforme a situação.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Autoaperfeiçoamento</th>
+                                    <td>De ausência de aprendizado para aprendizado contínuo com base em <span
+                                            lang="en">feedback</span>, experiência e novos dados.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Alinhamento normativo</th>
+                                    <td>De simples obediência a regras fixas para integração dinâmica de princípios
+                                        éticos e
+                                        valores, garantindo comportamento alinhado a normas e expectativas.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <p>
-                        Em meio a esse cenário de avanços globais em IA, a presença da Zup no WAIC mostra que estamos
-                        ligados no que há de mais estratégico no setor, não só acompanhando tendências, mas trazendo
-                        aprendizados práticos para dentro de casa. Esse olhar global alimenta nossas decisões e inspira
-                        a evolução de produtos como o <strong>StackSpot</strong>, visando navegar tanto pelas demandas
-                        do mercado americano quanto pelos desafios do ecossistema chinês.
+                    <p>O <strong>artigo também diferencia <em lang="en">cognitive agency</em> (como o sistema pensa e
+                            raciocina) de <em lang="en">environmental agency</em> (como o sistema atua e interpreta o
+                            ambiente).</strong> Essa separação ajuda empresas e pesquisadores a entenderem se um agente
+                        é mais indicado para tarefas puramente analíticas ou para operações em ambientes dinâmicos. Um
+                        exemplo é o <span lang="en">GitHub Copilot</span>, que observa o contexto de desenvolvimento e
+                        sugere código de forma contínua, contrastando com um <span lang="en">chatbot</span> simples que
+                        só responde quando solicitado.
                     </p>
 
-                    <p class="article-note">
-                        <em>* O documento oficial do plano de ação em IA ainda não foi disponibilizado na íntegra para o
-                            grande público.</em>
+                    <p>Para demonstrar a aplicabilidade da tipologia, os autores analisaram sistemas como o <span
+                            lang="en">GitHub Copilot</span>, <span lang="en">Copilot Chat</span>, <span lang="en">OpenAI
+                            Deep Research</span> e <span lang="en">Operator</span>. Por exemplo, o <span
+                            lang="en">Copilot Chat</span> é classificado como um agente simples: limitado a interações
+                        pontuais (<span lang="en">Q&A</span>), com conhecimento amplo, percepção unimodal (texto),
+                        operação sob demanda e governança baseada em regras. Já o <span lang="en">Operator</span>,
+                        baseado em <span lang="en">GPT-4</span> com visão computacional, é um agente complexo, capaz de
+                        raciocínio reflexivo, percepção multimodal, operação contínua, adaptação durante a execução e
+                        alinhamento normativo mais avançado. O <span lang="en">Deep Research</span>, da <span
+                            lang="en">OpenAI</span>, é classificado como um agente de pesquisa com alta capacidade
+                        cognitiva, mas baixa interação ambiental.
+                    </p>
+
+                    <p><strong>Para desenvolvedores e líderes técnicos, a tipologia oferece uma ferramenta objetiva para
+                            comparar sistemas de IA agentes, identificar lacunas de funcionalidade e antecipar as
+                            necessidades de integração ou governança. Para gestores e diretores, o <span
+                                lang="en">framework</span> serve como suporte à decisão para investimentos em IA,
+                            permitindo alinhar expectativas com o real potencial e limitações dos sistemas
+                            disponíveis.</strong> A tipologia permite mapear e comparar agentes com base em capacidades
+                        observáveis, ajudando na seleção de tecnologias alinhadas aos objetivos de negócio e à
+                        identificação de riscos. Por exemplo, agentes com alto grau de autoaperfeiçoamento e operação
+                        contínua podem aumentar a eficiência, mas também demandam políticas robustas de governança para
+                        prevenir desvios de comportamento ou violações éticas. A dimensão de alinhamento normativo é
+                        especialmente relevante, pois mede até que ponto o agente incorpora valores e princípios éticos,
+                        indo além do simples cumprimento de regras fixas.
+                    </p>
+
+                    <p>Os autores alertam que a evolução rápida desses sistemas exige atenção tanto para oportunidades
+                        quanto para consequências indesejadas. Entre os riscos estão o deslocamento de funções humanas,
+                        mudanças no controle sobre decisões críticas e desafios éticos em ambientes de múltiplos
+                        agentes. Por outro lado, a adoção de sistemas mais sofisticados pode oferecer vantagens
+                        competitivas, melhorar processos e liberar profissionais para atividades de maior valor
+                        agregado.
+                    </p>
+
+                    <p><a href="https://arxiv.org/pdf/2508.00844" target="_blank" rel="noopener noreferrer"
+                            hreflang="en">Confira o artigo "<em lang="en">Exploring Agentic
+                                Artificial Intelligence Systems: Towards a Typological Framework</em>" original e na
+                            íntegra, em inglês.</a>
                     </p>
                 </div>
-            </article>
-        </main>
+    </div>
+    </article>
+    </main>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-                <!-- Mensagem de agradecimento e feedback -->
-                <div class="footer-feedback">
-                    <p class="feedback-message">Obrigado por nos acompanhar até o fim!</p>
-                    <p class="feedback-text">
-                        Gostou? <a href="https://zup1.typeform.com/fwdinsights" target="_blank">Deixe seu feedback</a>.
-                    </p>
-                </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Mensagem de agradecimento e feedback -->
+            <div class="footer-feedback">
+                <p class="feedback-message">Obrigado por nos acompanhar até o fim!</p>
+                <p class="feedback-text">
+                    Gostou? <a href="https://zup1.typeform.com/fwdinsights" target="_blank">Deixe seu feedback</a>.
+                </p>
+            </div>
 
-                <!-- Powered by StackSpot AI -->
-                <div class="footer-powered">
-                    <!-- 
+            <!-- Powered by StackSpot AI -->
+            <div class="footer-powered">
+                <!-- 
                         "Powered by StackSpot AI": Credita a tecnologia que dá suporte ao nosso conteúdo.
                         Atualmente sem link para manter foco no CTA principal abaixo.
                     -->
-                    <span class="powered-label">Powered by</span>
-                    <img src="assets/StackSpotAI-grafismo.png" alt="Logo StackSpotAI" class="powered-logo" />
-                    <span class="powered-text sr-only">StackSpotAI</span>
-                </div>
+                <span class="powered-label">Powered by</span>
+                <img src="assets/StackSpotAI-grafismo.png" alt="Logo StackSpotAI" class="powered-logo" />
+                <span class="powered-text sr-only">StackSpotAI</span>
+            </div>
 
-                <!-- Separador -->
-                <hr class="footer-divider">
+            <!-- Separador -->
+            <hr class="footer-divider">
 
-                <!-- Navegação e CTA -->
-                <!-- 
+            <!-- Navegação e CTA -->
+            <!-- 
                     NOTA: Os links "Sobre", "Contato" e "Newsletter" abaixo foram comentados.
                     São opções preparadas pensando em escalarmos o Zup Labs Insights para um público 
                     externo à Zup. Por enquanto, servem apenas como estrutura do layout para futuro uso.
                 -->
-                <div class="footer-navigation">
-                    <!-- 
+            <div class="footer-navigation">
+                <!-- 
                     <div class="footer-links">
                         <a href="#" class="footer-link">Sobre</a>
                         <a href="#" class="footer-link">Contato</a>
                         <a href="#" class="footer-link">Newsletter</a>
                     </div>
                     -->
-                    <div class="footer-cta">
-                        <!-- 
+                <div class="footer-cta">
+                    <!-- 
                             CTA "Conheça o StackSpot AI": Call-to-Action estratégico para incentivar 
                             os leitores a explorarem ativamente o StackSpot após consumirem nosso conteúdo.
                             Agora centralizado após remoção dos links de navegação.
                         -->
-                        <a href="https://stackspot.com" target="_blank" class="cta-button">
-                            Conheça o StackSpot AI
-                        </a>
-                    </div>
+                    <a href="https://stackspot.com" target="_blank" class="cta-button">
+                        Conheça o StackSpot AI
+                    </a>
                 </div>
-
-                <!-- Copyright -->
-                <p class="footer-copyright">&copy; 2025 Zup Labs Insights. Todos os direitos reservados.</p>
             </div>
-        </footer>
+
+            <!-- Copyright -->
+            <p class="footer-copyright">&copy; 2025 Zup Labs Insights. Todos os direitos reservados.</p>
+        </div>
+    </footer>
     </div>
 </body>
 
